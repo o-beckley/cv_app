@@ -10,17 +10,19 @@ class Experience {
     required this.startYear,
     required this.endYear,
   }) {
-    years = startYear - endYear;
+    years = endYear - startYear;
   }
 }
 
 class Education {
-  String institute;
+  String program;
+  String course;
   int startYear;
   int? endYear;
   bool stillEnrolled;
   Education(
-      {required this.institute,
+      {required this.program,
+      required this.course,
       required this.startYear,
       required this.endYear,
       required this.stillEnrolled});
@@ -40,14 +42,16 @@ class Language {
 
 class CVModel extends ChangeNotifier {
   // DEFAULTS
-  String name = 'Olasunkanmi Beckley';
-  String email = 'beckleysunkanmi@gmail.com';
-  String phone = '+234 905 322 1941';
-  String slack = 'Olasunkanmi Beckley';
-  String github = 'github.com/o-beckley'; //ontap, launch webview
-  String bio = 'A hard working student ...';
+  Map<String, String> personalInfo = {
+    'name': 'Olasunkanmi Beckley',
+    'email': 'beckleysunkanmi @gmail.com',
+    'phone': '+234 905 322 1941',
+    'slack': 'Olasunkanmi Beckley',
+    'github': 'github.com/o-beckley',
+    'bio': 'A hard working student',
+  };
   List<Experience> workExperiences = [
-    Experience(position: 'python developer', startYear: 1841, endYear: 2022)
+    Experience(position: 'python developer', startYear: 1841, endYear: 2022),
   ];
   List<Skill> skills = [
     Skill(name: 'python', level: 10),
@@ -56,7 +60,8 @@ class CVModel extends ChangeNotifier {
   ];
   List<Education> educations = [
     Education(
-        institute: 'UniLag',
+        program: 'BSc',
+        course: 'Civil Engineering',
         startYear: 2020,
         endYear: 2025,
         stillEnrolled: true)
@@ -74,12 +79,12 @@ class CVModel extends ChangeNotifier {
       String? newSlack,
       String? newGithub,
       String? newBio}) {
-    name = newName ?? name;
-    email = newEmail ?? email;
-    phone = newPhone ?? phone;
-    slack = newSlack ?? slack;
-    github = newGithub ?? github;
-    bio = newBio ?? bio;
+    personalInfo['name'] = newName ?? personalInfo['name']!;
+    personalInfo['email'] = newEmail ?? personalInfo['email']!;
+    personalInfo['phone'] = newPhone ?? personalInfo['phone']!;
+    personalInfo['slack'] = newSlack ?? personalInfo['slack']!;
+    personalInfo['github'] = newGithub ?? personalInfo['github']!;
+    personalInfo['bio'] = newBio ?? personalInfo['bio']!;
     notifyListeners();
   }
 
@@ -117,9 +122,10 @@ class CVModel extends ChangeNotifier {
   }
 
   void editEducation(int index,
-      {String? institute, int? startYear, int? endYear, bool? stillEnrolled}) {
+      {String? program, String? course, int? startYear, int? endYear, bool? stillEnrolled}) {
     educations[index] = Education(
-        institute: institute ?? educations[index].institute,
+        program: program ?? educations[index].program,
+        course: course ?? educations[index].course,
         startYear: startYear ?? educations[index].startYear,
         endYear: endYear ?? educations[index].endYear,
         stillEnrolled: stillEnrolled ?? educations[index].stillEnrolled);
