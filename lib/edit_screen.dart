@@ -14,14 +14,6 @@ class EditScreen extends StatefulWidget {
 class _EditScreenState extends State<EditScreen> {
 
   @override
-  void initState() {
-    super.initState();
-    widget.model.addListener(() {
-        setState(() {});
-      });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(

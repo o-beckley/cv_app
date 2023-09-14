@@ -30,6 +30,7 @@ class _CVAppState extends State<CVApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'CV App',
+      debugShowCheckedModeBanner: false,
       theme: theme,
       home: Home(model: model),
     );

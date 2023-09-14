@@ -42,7 +42,7 @@ class PersonalInfoCard extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const PersonalInfoScreen()));
+                      builder: (context) => PersonalInfoScreen(model: model)));
             },
             icon: Icon(
               Icons.edit_outlined,
@@ -96,7 +96,7 @@ class ExperienceCard extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const ExperienceScreen()));
+                    builder: (context) => ExperienceScreen(model: model,)));
           },
           icon: Icon(
             Icons.add_outlined,
@@ -148,7 +148,7 @@ class SkillCard extends StatelessWidget {
         iconButton: IconButton(
           onPressed: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const SkillScreen()));
+                MaterialPageRoute(builder: (context) => SkillScreen(model: model)));
           },
           icon: Icon(Icons.add, color: Theme.of(context).colorScheme.secondary),
         ),
@@ -195,7 +195,7 @@ class EducationCard extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const EducationScreen()));
+                    builder: (context) =>  EducationScreen(model: model)));
           },
           icon:
               Icon(Icons.add, color: Theme.of(context).colorScheme.secondary)),
@@ -246,7 +246,7 @@ class LanguageCard extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const LanguageScreen()));
+                    builder: (context) => LanguageScreen(model: model)));
           },
           icon: Icon(
             Icons.add_outlined,
@@ -278,7 +278,8 @@ class SectionCard extends StatelessWidget {
               boxShadow: const [
                 BoxShadow(
                   color: Colors.grey,
-                  blurRadius: 15,
+                  blurRadius: 5,
+                  offset: Offset(0, 2.5)
                 )
               ]),
           child: Padding(

@@ -17,15 +17,9 @@ class Experience {
 class Education {
   String program;
   String course;
-  int startYear;
-  int? endYear;
-  bool stillEnrolled;
   Education(
       {required this.program,
-      required this.course,
-      required this.startYear,
-      required this.endYear,
-      required this.stillEnrolled});
+      required this.course});
 }
 
 class Skill {
@@ -54,22 +48,19 @@ class CVModel extends ChangeNotifier {
     Experience(position: 'python developer', startYear: 1841, endYear: 2022),
   ];
   List<Skill> skills = [
-    Skill(name: 'python', level: 10),
-    Skill(name: 'tensorflow', level: 8),
-    Skill(name: 'flutter', level: 9),
+    Skill(name: 'python', level: 5),
+    Skill(name: 'tensorflow', level: 4),
+    Skill(name: 'flutter', level: 4),
   ];
   List<Education> educations = [
     Education(
         program: 'BSc',
-        course: 'Civil Engineering',
-        startYear: 2020,
-        endYear: 2025,
-        stillEnrolled: true)
+        course: 'Civil Engineering')
   ];
   List<Language> languages = [
-    Language(language: 'English', level: 10),
-    Language(language: 'Chinese', level: 5),
-    Language(language: 'Yoruba', level: 7)
+    Language(language: 'English', level: 5),
+    Language(language: 'Chinese', level: 3),
+    Language(language: 'Yoruba', level: 3)
   ];
 
   void editPersonalInfo(
@@ -122,13 +113,10 @@ class CVModel extends ChangeNotifier {
   }
 
   void editEducation(int index,
-      {String? program, String? course, int? startYear, int? endYear, bool? stillEnrolled}) {
+      {String? program, String? course}) {
     educations[index] = Education(
         program: program ?? educations[index].program,
-        course: course ?? educations[index].course,
-        startYear: startYear ?? educations[index].startYear,
-        endYear: endYear ?? educations[index].endYear,
-        stillEnrolled: stillEnrolled ?? educations[index].stillEnrolled);
+        course: course ?? educations[index].course);
     notifyListeners();
   }
 
